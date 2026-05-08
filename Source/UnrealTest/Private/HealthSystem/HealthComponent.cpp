@@ -24,18 +24,23 @@ void UHealthComponent::ApplyDamage(const float DamageAmount)
 	
 	const float OldValue = CurrentHealth;
 	
-	CurrentHealth = FMath::Clamp(CurrentHealth + DamageAmount, 0.f, MaxHealth);
+	CurrentHealth = FMath::Clamp(CurrentHealth - DamageAmount, 0.f, MaxHealth);
 	
 	bCanBeDamaged = CurrentHealth != 0.0f;
 	
 	OnHealthValueChangedDelegate.Broadcast(OldValue, CurrentHealth);
+	
+	if (CurrentHealth <= 0.0f) //little debug log for the funsies
+	{
+		UE_LOG(LogTemp,Warning,TEXT("Dead"));
+	}
 }
 
 void UHealthComponent::Heal(const float HealAmount)
 {
 	const float OldValue = CurrentHealth;
 	
-	CurrentHealth = FMath::Clamp(CurrentHealth - HealAmount, 0.f, MaxHealth);
+	CurrentHealth = FMath::Clamp(CurrentHealth + HealAmount, 0.f, MaxHealth);
 	
 	bCanBeDamaged = CurrentHealth != 0.0f;
 	

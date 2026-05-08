@@ -7,7 +7,7 @@
 #include "Damageable.generated.h"
 
 // This class does not need to be modified.
-UINTERFACE(MinimalAPI, Blueprintable)
+UINTERFACE(Blueprintable,MinimalAPI)
 class UDamageable : public UInterface
 {
 	GENERATED_BODY()
@@ -18,12 +18,12 @@ class UNREALTEST_API IDamageable
 	GENERATED_BODY()
 
 public:
-	UFUNCTION(BlueprintNativeEvent, Category = Damageable)
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = Damageable)
 	class UHealthComponent* GetHealthComponent() const;
 	
-	UFUNCTION(BlueprintNativeEvent, Category = Damageable)
-	void ApplyDamage(const float DamageAmount);
+	UFUNCTION(BlueprintNativeEvent,BlueprintCallable ,Category = Damageable)
+	void  ApplyDamage(const float DamageAmount);
 	
-	UFUNCTION(BlueprintNativeEvent, Category = Damageable)
+	UFUNCTION(BlueprintNativeEvent,BlueprintCallable, Category = Damageable)
 	void Heal(const float HealAmount);
 };

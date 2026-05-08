@@ -22,7 +22,6 @@ public:
 	FOnHealthValueChangedSignature OnHealthValueChangedDelegate;
 	
 	UHealthComponent();
-
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (UIMin = 0.0f, ClampMin = 0.0f))
 	float MaxHealth;

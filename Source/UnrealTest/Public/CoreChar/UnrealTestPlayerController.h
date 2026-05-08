@@ -53,11 +53,11 @@ public:
 	UFUNCTION()
 	void Move(const FInputActionValue& Value);
 	
-	UFUNCTION()
-	void Jump(const FInputActionValue& InputActionValue);
+	/*UFUNCTION()
+	void Jump(const FInputActionValue& InputActionValue);*/
 	
-	UFUNCTION()
-	void StopJumping(const FInputActionValue& InputActionValue);
+	/*UFUNCTION()
+	void StopJumping(const FInputActionValue& InputActionValue);*/
 
 	UFUNCTION()
 	void Interact();

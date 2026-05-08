@@ -18,5 +18,5 @@ class UNREALTEST_API IInteractable
 
 public:
 	UFUNCTION(BlueprintNativeEvent)
-	void Interact();
+ void Interact();
 };

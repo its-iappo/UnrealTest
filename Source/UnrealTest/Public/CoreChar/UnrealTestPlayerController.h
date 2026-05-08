@@ -60,5 +60,5 @@ public:
 	void StopJumping(const FInputActionValue& InputActionValue);
 
 	UFUNCTION()
-	void Interact();
+	void Interact(const FInputActionValue& InputActionValue);
 };

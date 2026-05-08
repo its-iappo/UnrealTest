@@ -26,4 +26,5 @@ public:
 	
 	UFUNCTION(BlueprintNativeEvent, Category = Damageable)
 	void Heal(const float HealAmount);
+	
 };

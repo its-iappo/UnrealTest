@@ -34,7 +34,18 @@ AUnrealTestCharacter::AUnrealTestCharacter()
 	GetCharacterMovement()->BrakingDecelerationFalling = 1500.0f;
 }
 
-void AUnrealTestCharacter::DoMove(float Right, float Forward)
+void AUnrealTestCharacter::DoMove(float Yaw, float Pitch)
+{
+	
+	if (GetController() != nullptr)
+	{
+		// add yaw and pitch input to controller
+		AddControllerYawInput(Yaw);
+		AddControllerPitchInput(Pitch);
+	}
+}
+
+void AUnrealTestCharacter::DoLook(float Right, float Forward)
 {
 	if (GetController() != nullptr)
 	{
@@ -51,16 +62,6 @@ void AUnrealTestCharacter::DoMove(float Right, float Forward)
 		// add movement 
 		AddMovementInput(ForwardDirection, Forward);
 		AddMovementInput(RightDirection, Right);
-	}
-}
-
-void AUnrealTestCharacter::DoLook(float Yaw, float Pitch)
-{
-	if (GetController() != nullptr)
-	{
-		// add yaw and pitch input to controller
-		AddControllerYawInput(Yaw);
-		AddControllerPitchInput(Pitch);
 	}
 }
 

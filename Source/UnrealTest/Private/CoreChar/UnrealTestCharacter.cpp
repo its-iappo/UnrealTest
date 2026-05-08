@@ -9,6 +9,8 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "HealthSystem/HealthComponent.h"
 #include "InteractionSystem/Interactable.h"
+#include "Splines/SplineMath.h"
+#include "HealthSystem/Damageable.h"
 
 AUnrealTestCharacter::AUnrealTestCharacter()
 {
@@ -32,9 +34,39 @@ AUnrealTestCharacter::AUnrealTestCharacter()
 	GetCharacterMovement()->MinAnalogWalkSpeed = 20.f;
 	GetCharacterMovement()->BrakingDecelerationWalking = 2000.f;
 	GetCharacterMovement()->BrakingDecelerationFalling = 1500.0f;
+	
+	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("HealthComponent"));
 }
 
-void AUnrealTestCharacter::DoMove(float Right, float Forward)
+void AUnrealTestCharacter::DoJump()
+{
+	if (GetController() != nullptr)
+	{
+		Jump();
+	}
+}
+
+void AUnrealTestCharacter::DoStopJumping()
+{
+	if (GetController() != nullptr)
+	{
+		StopJumping();
+	}
+}
+
+void AUnrealTestCharacter::DoMove(float Yaw, float Pitch)
+{
+	
+	if (GetController() != nullptr)
+	{
+		// add yaw and pitch input to controller
+		AddControllerYawInput(Yaw);
+		AddControllerPitchInput(Pitch);
+	}
+	
+}
+
+void AUnrealTestCharacter::DoLook(float Right, float Forward)
 {
 	if (GetController() != nullptr)
 	{
@@ -54,25 +86,16 @@ void AUnrealTestCharacter::DoMove(float Right, float Forward)
 	}
 }
 
-void AUnrealTestCharacter::DoLook(float Yaw, float Pitch)
+void AUnrealTestCharacter::DoInteract()
 {
-	if (GetController() != nullptr)
-	{
-		// add yaw and pitch input to controller
-		AddControllerYawInput(Yaw);
-		AddControllerPitchInput(Pitch);
-	}
-}
-
-void AUnrealTestCharacter::Interact()
-{
+	
+	FCollisionQueryParams Params;
+	
+	Params.AddIgnoredActor(this);
+	
 	TArray<FOverlapResult> Overlaps;
 
-	GetWorld()->OverlapMultiByChannel(Overlaps,
-	                                  GetActorLocation(), FQuat::Identity,
-	                                  ECollisionChannel::ECC_Visibility,
-	                                  FCollisionShape::MakeSphere(InteractionRadius)
-	);
+	GetWorld()->OverlapMultiByChannel(Overlaps,GetActorLocation(), FQuat::Identity, ECollisionChannel::ECC_Visibility, FCollisionShape::MakeSphere(InteractionRadius));
 	
 	for (const auto& Overlap : Overlaps)
 	{
@@ -83,12 +106,31 @@ void AUnrealTestCharacter::Interact()
 	}
 }
 
+void AUnrealTestCharacter::DoAttack()
+{
+	FCollisionQueryParams Params;
+	
+	Params.AddIgnoredActor(this);
+	
+	TArray<FOverlapResult> Overlaps;
+
+	GetWorld()->OverlapMultiByChannel(Overlaps,GetActorLocation(), FQuat::Identity, ECollisionChannel::ECC_Visibility, FCollisionShape::MakeSphere(InteractionRadius));
+	
+	for (const auto& Overlap : Overlaps)
+	{
+		if (Overlap.GetActor()->Implements<UDamageable>())
+		{
+			IDamageable::Execute_ApplyDamage(Overlap.GetActor(), Damage);
+		}
+	}
+}
+
 void AUnrealTestCharacter::ApplyDamage_Implementation(const float DamageAmount)
 {
-	HealthComponent->Heal(DamageAmount);
+	HealthComponent->ApplyDamage(DamageAmount);
 }
 
 void AUnrealTestCharacter::Heal_Implementation(const float HealAmount)
 {
-	HealthComponent->ApplyDamage(HealAmount);
+	HealthComponent->Heal(HealAmount);
 }

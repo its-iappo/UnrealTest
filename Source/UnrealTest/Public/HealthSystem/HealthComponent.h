@@ -13,8 +13,10 @@ class UNREALTEST_API UHealthComponent : public UActorComponent
 {
 	GENERATED_BODY()
 
+	UPROPERTY()
 	float CurrentHealth = 0.0f;
 	
+	UPROPERTY()
 	bool bCanBeDamaged = true;
 
 public:

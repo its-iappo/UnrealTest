@@ -44,6 +44,9 @@ public:
 	UPROPERTY(EditAnywhere, Category="Input")
 	TObjectPtr<UInputAction> InteractAction;
 	
+	UPROPERTY(EditAnywhere, Category="Input")
+	TObjectPtr<UInputAction> AttackAction;
+	
 	virtual void OnPossess(APawn* InPawn) override;
 	virtual void OnUnPossess() override;
 	
@@ -61,4 +64,7 @@ public:
 
 	UFUNCTION()
 	void Interact();
+	
+	UFUNCTION()
+	void Attack();
 };

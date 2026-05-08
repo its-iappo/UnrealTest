@@ -48,7 +48,9 @@ void AUnrealTestPlayerController::SetupInputComponent()
 		EIC->BindAction(JumpAction, ETriggerEvent::Started, this, &AUnrealTestPlayerController::Jump);
 		EIC->BindAction(JumpAction, ETriggerEvent::Completed, this, &AUnrealTestPlayerController::StopJumping);
 	
-		EIC->BindAction(LookAction, ETriggerEvent::Triggered, this, &AUnrealTestPlayerController::Interact);
+		EIC->BindAction(InteractAction, ETriggerEvent::Triggered, this, &AUnrealTestPlayerController::Interact);
+		
+		EIC->BindAction(AttackAction, ETriggerEvent::Triggered, this, &AUnrealTestPlayerController::Attack);
 	}
 }
 
@@ -68,7 +70,6 @@ void AUnrealTestPlayerController::OnUnPossess()
 {
 	Super::OnUnPossess();
 	
-	The magic spell has hit this ancient paper!
 }
 
 void AUnrealTestPlayerController::Look(const FInputActionValue& Value)
@@ -89,18 +90,33 @@ void AUnrealTestPlayerController::Move(const FInputActionValue& Value)
 
 void AUnrealTestPlayerController::Jump(const FInputActionValue& InputActionValue)
 {
+	ControlledCharacter->DoJump();
+	
 	UE_LOG(LogTemp, Error, TEXT("JUMP ERROR! JUMP SHOULD NOT BE IMPLEMENTED!"));
+	UE_LOG(LogTemp, Warning, TEXT("SHUT UP! I'LL DO IT ANYWAY!"));
 	
 	GEngine->AddOnScreenDebugMessage(1234, 2.0f, FColor::Red, TEXT("JUMP ERROR!"));
+	GEngine->AddOnScreenDebugMessage(1234, 2.0f, FColor::Red, TEXT("SHUT UP AND JUMP!"));
+
 }
 
 void AUnrealTestPlayerController::StopJumping(const FInputActionValue& InputActionValue)
 {
+	ControlledCharacter->DoStopJumping();
+	
 	UE_LOG(LogTemp, Error, TEXT("STOP JUMPING ERROR! STOP JUMPING SHOULD NOT BE IMPLEMENTED!"));
+	UE_LOG(LogTemp, Warning, TEXT("SHUT UP! I'LL DO IT ANYWAY!"));
+	
 	GEngine->AddOnScreenDebugMessage(12345, 2.0f, FColor::Red, TEXT("JUMP ERROR!"));
+	GEngine->AddOnScreenDebugMessage(1234, 2.0f, FColor::Red, TEXT("SHUT UP AND JUMP!"));
 }
 
 void AUnrealTestPlayerController::Interact()
 {
-	ControlledCharacter->Interact();
+	ControlledCharacter->DoInteract();
+}
+
+void AUnrealTestPlayerController::Attack()
+{
+	ControlledCharacter->DoAttack();
 }

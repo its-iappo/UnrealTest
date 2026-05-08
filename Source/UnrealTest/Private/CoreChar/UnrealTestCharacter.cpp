@@ -45,7 +45,7 @@ AUnrealTestCharacter::AUnrealTestCharacter()
 			const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
 
 			AddMovementInput(ForwardDirection, Forward);
-			AddMovementInput(RightDirection, Right);
+			AddMovementInput(RightDirection, -Right);
 		}
 	}
 

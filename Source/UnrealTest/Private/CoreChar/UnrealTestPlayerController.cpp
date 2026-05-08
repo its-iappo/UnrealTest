@@ -35,7 +35,6 @@
 #include "Engine/LocalPlayer.h"
 #include "InputMappingContext.h"
 #include "CoreChar/UnrealTestCharacter.h"
-#include "CoreChar/PlayerCharacter.h"
 
 void AUnrealTestPlayerController::SetupInputComponent()
 {
@@ -84,7 +83,9 @@ void AUnrealTestPlayerController::Move(const FInputActionValue& Value)
 
 	// route the input
 	ControlledCharacter->DoMove(MovementVector.X,MovementVector.Y);
+	
 }
+
 
 void AUnrealTestPlayerController::Jump(const FInputActionValue& InputActionValue)
 {

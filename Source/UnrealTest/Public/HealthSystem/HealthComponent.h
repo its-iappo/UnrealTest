@@ -22,6 +22,8 @@ public:
 	FOnHealthValueChangedSignature OnHealthValueChangedDelegate;
 	
 	UHealthComponent();
+	
+	virtual void BeginPlay() override;
 
 protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (UIMin = 0.0f, ClampMin = 0.0f))
@@ -29,8 +31,6 @@ protected:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	bool bStartWithMaxHealth = true;
-	
-	virtual void BeginPlay() override;
 	
 public:
 	

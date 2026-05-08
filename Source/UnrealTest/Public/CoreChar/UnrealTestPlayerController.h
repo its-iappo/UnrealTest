@@ -29,7 +29,9 @@ protected:
 	
 	UPROPERTY()
 	TObjectPtr<AUnrealTestCharacter> ControlledCharacter;
-
+	
+	virtual void OnPossess(APawn* InPawn) override;
+	virtual void OnUnPossess() override;
 public:
 	
 	UPROPERTY(EditAnywhere, Category="Input")
@@ -44,8 +46,7 @@ public:
 	UPROPERTY(EditAnywhere, Category="Input")
 	TObjectPtr<UInputAction> InteractAction;
 	
-	virtual void OnPossess(APawn* InPawn) override;
-	virtual void OnUnPossess() override;
+	
 	
 	UFUNCTION()
 	void Look(const FInputActionValue& Value);
@@ -60,5 +61,5 @@ public:
 	void StopJumping(const FInputActionValue& InputActionValue);
 
 	UFUNCTION()
-	void Interact();
+	void Interact(const FInputActionValue& InputActionValue);
 };

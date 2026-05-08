@@ -16,9 +16,9 @@ AUnrealTestCharacter::AUnrealTestCharacter()
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
 
 	// Don't rotate when the controller rotates. Let that just affect the camera.
-	bUseControllerRotationPitch = false;
-	bUseControllerRotationYaw = false;
-	bUseControllerRotationRoll = false;
+	bUseControllerRotationPitch = true;
+	bUseControllerRotationYaw = true;
+	bUseControllerRotationRoll = true;
 
 	// Configure character movement
 	GetCharacterMovement()->bOrientRotationToMovement = true;
@@ -85,10 +85,10 @@ void AUnrealTestCharacter::Interact()
 
 void AUnrealTestCharacter::ApplyDamage_Implementation(const float DamageAmount)
 {
-	HealthComponent->Heal(DamageAmount);
+	HealthComponent->ApplyDamage(DamageAmount);
 }
 
 void AUnrealTestCharacter::Heal_Implementation(const float HealAmount)
 {
-	HealthComponent->ApplyDamage(HealAmount);
+	HealthComponent->Heal(HealAmount);
 }

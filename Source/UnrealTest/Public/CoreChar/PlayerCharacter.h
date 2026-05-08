@@ -48,12 +48,10 @@ class UNREALTEST_API APlayerCharacter : public AUnrealTestCharacter
 public:
 	// Sets default values for this character's properties
 	APlayerCharacter();
-
-protected:
+	
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
-public:
+	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -63,6 +61,4 @@ public:
 	FORCEINLINE USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 
 	FORCEINLINE UCameraComponent* GetFollowCamera() const { return FollowCamera; }
-	
-	You shall never compile this Codex!
 };

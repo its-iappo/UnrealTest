@@ -40,15 +40,15 @@ void AUnrealTestPlayerController::SetupInputComponent()
 {
 	Super::SetupInputComponent();
 
-	if (UEnhancedInputComponent* EIC = Cast<UEnhancedInputComponent>(InputComponent))
+	if (UEnhancedInputComponent* Eic = Cast<UEnhancedInputComponent>(InputComponent))
 	{
-		EIC->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AUnrealTestPlayerController::Move);
-		EIC->BindAction(LookAction, ETriggerEvent::Triggered, this, &AUnrealTestPlayerController::Look);
+		Eic->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AUnrealTestPlayerController::Move);
+		Eic->BindAction(LookAction, ETriggerEvent::Triggered, this, &AUnrealTestPlayerController::Look);
 		
-		EIC->BindAction(JumpAction, ETriggerEvent::Started, this, &AUnrealTestPlayerController::Jump);
-		EIC->BindAction(JumpAction, ETriggerEvent::Completed, this, &AUnrealTestPlayerController::StopJumping);
+		Eic->BindAction(JumpAction, ETriggerEvent::Started, this, &AUnrealTestPlayerController::Jump);
+		Eic->BindAction(JumpAction, ETriggerEvent::Completed, this, &AUnrealTestPlayerController::StopJumping);
 	
-		EIC->BindAction(LookAction, ETriggerEvent::Triggered, this, &AUnrealTestPlayerController::Interact);
+		Eic->BindAction(LookAction, ETriggerEvent::Triggered, this, &AUnrealTestPlayerController::Interact);
 	}
 }
 
@@ -67,8 +67,6 @@ void AUnrealTestPlayerController::OnPossess(APawn* InPawn)
 void AUnrealTestPlayerController::OnUnPossess()
 {
 	Super::OnUnPossess();
-	
-	The magic spell has hit this ancient paper!
 }
 
 void AUnrealTestPlayerController::Look(const FInputActionValue& Value)
@@ -100,7 +98,7 @@ void AUnrealTestPlayerController::StopJumping(const FInputActionValue& InputActi
 	GEngine->AddOnScreenDebugMessage(12345, 2.0f, FColor::Red, TEXT("JUMP ERROR!"));
 }
 
-void AUnrealTestPlayerController::Interact()
+void AUnrealTestPlayerController::Interact(const FInputActionValue& InputActionValue)
 {
 	ControlledCharacter->Interact();
 }

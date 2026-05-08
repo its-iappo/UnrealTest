@@ -23,7 +23,7 @@ public:
 	
 	UHealthComponent();
 
-protected:
+public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (UIMin = 0.0f, ClampMin = 0.0f))
 	float MaxHealth;
 	
@@ -31,8 +31,6 @@ protected:
 	bool bStartWithMaxHealth = true;
 	
 	virtual void BeginPlay() override;
-	
-public:
 	
 	UFUNCTION(BlueprintCallable)
 	void ApplyDamage(const float DamageAmount);	

@@ -32,6 +32,7 @@ AUnrealTestCharacter::AUnrealTestCharacter()
 	GetCharacterMovement()->MinAnalogWalkSpeed = 20.f;
 	GetCharacterMovement()->BrakingDecelerationWalking = 2000.f;
 	GetCharacterMovement()->BrakingDecelerationFalling = 1500.0f;
+	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("HealthComponent"));
 }
 
 void AUnrealTestCharacter::DoMove(float Right, float Forward)
@@ -66,6 +67,7 @@ void AUnrealTestCharacter::DoLook(float Yaw, float Pitch)
 
 void AUnrealTestCharacter::Interact()
 {
+	//UE_LOG(LogTemp,Warning, TEXT("Interact"));
 	TArray<FOverlapResult> Overlaps;
 
 	GetWorld()->OverlapMultiByChannel(Overlaps,

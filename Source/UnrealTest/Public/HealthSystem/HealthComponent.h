@@ -18,7 +18,7 @@ class UNREALTEST_API UHealthComponent : public UActorComponent
 	bool bCanBeDamaged = true;
 
 public:
-	UPROPERTY(BlueprintAssignable)
+	UPROPERTY(BlueprintAssignable, BlueprintCallable)
 	FOnHealthValueChangedSignature OnHealthValueChangedDelegate;
 	
 	UHealthComponent();
@@ -35,8 +35,11 @@ protected:
 public:
 	
 	UFUNCTION(BlueprintCallable)
-	void ApplyDamage(const float DamageAmount);	
+	void ApplyDamage(const float DamageAmount);
 	
 	UFUNCTION(BlueprintCallable)
 	void Heal(const float HealAmount);
+	
+	UFUNCTION(BlueprintCallable)
+	float GetHealth();	
 };

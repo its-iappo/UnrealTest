@@ -29,6 +29,7 @@ void UHealthComponent::ApplyDamage(const float DamageAmount)
 	bCanBeDamaged = CurrentHealth != 0.0f;
 	
 	OnHealthValueChangedDelegate.Broadcast(OldValue, CurrentHealth);
+	
 }
 
 void UHealthComponent::Heal(const float HealAmount)
@@ -40,4 +41,9 @@ void UHealthComponent::Heal(const float HealAmount)
 	bCanBeDamaged = CurrentHealth != 0.0f;
 	
 	OnHealthValueChangedDelegate.Broadcast(OldValue, CurrentHealth);
+}
+
+float UHealthComponent::GetHealth()
+{
+	return CurrentHealth;
 }

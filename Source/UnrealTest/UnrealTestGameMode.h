@@ -9,7 +9,7 @@
 /**
  *  Simple GameMode for a third person game
  */
-UCLASS(abstract)
+UCLASS()
 class AUnrealTestGameMode : public AGameModeBase
 {
 	GENERATED_BODY()

@@ -68,7 +68,7 @@ void AUnrealTestPlayerController::OnUnPossess()
 {
 	Super::OnUnPossess();
 	
-	The magic spell has hit this ancient paper!
+	
 }
 
 void AUnrealTestPlayerController::Look(const FInputActionValue& Value)

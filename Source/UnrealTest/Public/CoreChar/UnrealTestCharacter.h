@@ -36,10 +36,10 @@
 #include "Logging/LogMacros.h"
 #include "UnrealTestCharacter.generated.h"
 
-class USpringArmComponent
-class UCameraComponent
-class UInputAction
-struct FInputActionValue
+class USpringArmComponent;
+class UCameraComponent;
+class UInputAction;
+struct FInputActionValue;
 
 DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All)
 
@@ -54,25 +54,25 @@ class AUnrealTestCharacter : public ACharacter, public IDamageable
 
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta = (AllowPrivateAccess = "true"))
-	TObjectPtr<class UHealthComponent> HealthComponent
+	TObjectPtr<class UHealthComponent> HealthComponent;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Interactions", meta = (AllowPrivateAccess = "true"))
-	float InteractionRadius = 0.0f
+	float InteractionRadius = 0.0f;
 
 public:
-	AUnrealTestCharacter()
+	AUnrealTestCharacter();
 	UFUNCTION(BlueprintCallable, Category="Input")
-	virtual void DoMove(float Right, float Forward)
-
-	UFUNCTION(BlueprintCallable, Category="Input")
-	virtual void DoLook(float Yaw, float Pitch)
+	virtual void DoMove(float Right, float Forward);
 
 	UFUNCTION(BlueprintCallable, Category="Input")
-	virtual void Interact()
+	virtual void DoLook(float Yaw, float Pitch);
+
+	UFUNCTION(BlueprintCallable, Category="Input")
+	virtual void Interact();
 
 
-	virtual UHealthComponent* GetHealthComponent_Implementation() const override { return HealthComponent }
+	virtual UHealthComponent* GetHealthComponent_Implementation() const override { return HealthComponent;}
 
-	virtual void ApplyDamage_Implementation(const float DamageAmount) override
-	virtual void Heal_Implementation(const float HealAmount) override
-}
+	virtual void ApplyDamage_Implementation(const float DamageAmount) override;
+	virtual void Heal_Implementation(const float HealAmount) override;
+};

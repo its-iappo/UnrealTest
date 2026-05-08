@@ -1,6 +1,6 @@
 # The Crimson Collapse
 
-The kingdom of Aetherfall is dying.
+The kingdom of Headerfall is dying.
 
 Once protected by ancient arcane engines and sacred runes woven into the land itself, the realm has now fallen into chaos. The skies burn crimson. The forests no longer breathe. Rivers carry ash instead of water, and every living creature whispers the same warning:
 
@@ -27,4 +27,4 @@ Beware:
 Not every failure is visible.
 Some bugs hide deep within the foundations of the world itself.
 
-Welcome to the Bug Bounty of Aetherfall.
+Welcome to the Bug Bounty of Headerfall.

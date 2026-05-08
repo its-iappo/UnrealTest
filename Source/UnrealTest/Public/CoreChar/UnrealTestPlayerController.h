@@ -55,7 +55,7 @@ public:
 	
 	UFUNCTION()
 	void Jump(const FInputActionValue& InputActionValue);
-	
+
 	UFUNCTION()
 	void StopJumping(const FInputActionValue& InputActionValue);
 

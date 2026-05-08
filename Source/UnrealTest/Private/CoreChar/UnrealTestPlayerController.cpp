@@ -35,6 +35,7 @@
 #include "Engine/LocalPlayer.h"
 #include "InputMappingContext.h"
 #include "CoreChar/UnrealTestCharacter.h"
+#include "CoreChar/PlayerCharacter.h"
 
 void AUnrealTestPlayerController::SetupInputComponent()
 {
@@ -87,15 +88,18 @@ void AUnrealTestPlayerController::Move(const FInputActionValue& Value)
 
 void AUnrealTestPlayerController::Jump(const FInputActionValue& InputActionValue)
 {
-	UE_LOG(LogTemp, Error, TEXT("JUMP ERROR! JUMP SHOULD NOT BE IMPLEMENTED!"));
-	
-	GEngine->AddOnScreenDebugMessage(1234, 2.0f, FColor::Red, TEXT("JUMP ERROR!"));
+	if (ACharacter* PlayerCharacter = Cast<ACharacter>(GetPawn()))
+	{
+		PlayerCharacter->Jump();
+	}
 }
 
 void AUnrealTestPlayerController::StopJumping(const FInputActionValue& InputActionValue)
 {
-	UE_LOG(LogTemp, Error, TEXT("STOP JUMPING ERROR! STOP JUMPING SHOULD NOT BE IMPLEMENTED!"));
-	GEngine->AddOnScreenDebugMessage(12345, 2.0f, FColor::Red, TEXT("JUMP ERROR!"));
+	if (ACharacter* PlayerCharacter = Cast<ACharacter>(GetPawn()))
+	{
+		PlayerCharacter->StopJumping();
+	}
 }
 
 void AUnrealTestPlayerController::Interact()

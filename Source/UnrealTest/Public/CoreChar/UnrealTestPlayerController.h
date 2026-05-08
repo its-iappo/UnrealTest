@@ -41,6 +41,9 @@ public:
 	UPROPERTY(EditAnywhere, Category="Input")
 	TObjectPtr<UInputAction> LookAction;
 	
+	UPROPERTY(EditAnywhere, Category="input")
+	UInputAction* MouseLookAction;
+	
 	UPROPERTY(EditAnywhere, Category="Input")
 	TObjectPtr<UInputAction> InteractAction;
 	

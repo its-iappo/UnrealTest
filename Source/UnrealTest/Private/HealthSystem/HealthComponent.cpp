@@ -24,7 +24,7 @@ void UHealthComponent::ApplyDamage(const float DamageAmount)
 	
 	const float OldValue = CurrentHealth;
 	
-	CurrentHealth = FMath::Clamp(CurrentHealth + DamageAmount, 0.f, MaxHealth);
+	CurrentHealth = FMath::Clamp(CurrentHealth - DamageAmount, 0.f, MaxHealth);
 	
 	bCanBeDamaged = CurrentHealth != 0.0f;
 	

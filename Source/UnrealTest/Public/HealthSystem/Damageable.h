@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "HealthComponent.h"
 #include "UObject/Interface.h"
 #include "Damageable.generated.h"
 
@@ -18,6 +19,7 @@ class UNREALTEST_API IDamageable
 	GENERATED_BODY()
 
 public:
+	
 	UFUNCTION(BlueprintNativeEvent, Category = Damageable)
 	class UHealthComponent* GetHealthComponent() const;
 	

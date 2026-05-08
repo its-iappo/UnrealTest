@@ -12,8 +12,6 @@ UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class UNREALTEST_API UHealthComponent : public UActorComponent
 {
 	GENERATED_BODY()
-
-	float CurrentHealth = 0.0f;
 	
 	bool bCanBeDamaged = true;
 
@@ -25,10 +23,13 @@ public:
 
 protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (UIMin = 0.0f, ClampMin = 0.0f))
-	float MaxHealth;
+	float MaxHealth = 100;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	bool bStartWithMaxHealth = true;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	float CurrentHealth = 0.0f;
 	
 	virtual void BeginPlay() override;
 	

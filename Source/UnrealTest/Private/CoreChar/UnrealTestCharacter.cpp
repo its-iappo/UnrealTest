@@ -92,3 +92,4 @@ void AUnrealTestCharacter::Heal_Implementation(const float HealAmount)
 {
 	HealthComponent->ApplyDamage(HealAmount);
 }
+

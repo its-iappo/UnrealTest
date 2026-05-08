@@ -68,10 +68,19 @@ void AUnrealTestPlayerController::OnUnPossess()
 {
 	Super::OnUnPossess();
 	
-	The magic spell has hit this ancient paper!
 }
 
 void AUnrealTestPlayerController::Look(const FInputActionValue& Value)
+{
+	const FVector2D MovementVector = Value.Get<FVector2D>();
+
+	// route the input
+	ControlledCharacter->DoMove(MovementVector.X, MovementVector.Y);
+
+
+}
+
+void AUnrealTestPlayerController::Move(const FInputActionValue& Value)
 {
 	const FVector2D LookAxisVector = Value.Get<FVector2D>();
 
@@ -79,25 +88,15 @@ void AUnrealTestPlayerController::Look(const FInputActionValue& Value)
 	ControlledCharacter->DoLook(LookAxisVector.X, LookAxisVector.Y);
 }
 
-void AUnrealTestPlayerController::Move(const FInputActionValue& Value)
-{
-	const FVector2D MovementVector = Value.Get<FVector2D>();
-
-	// route the input
-	ControlledCharacter->DoMove(MovementVector.X, MovementVector.Y);
-}
-
 void AUnrealTestPlayerController::Jump(const FInputActionValue& InputActionValue)
 {
-	UE_LOG(LogTemp, Error, TEXT("JUMP ERROR! JUMP SHOULD NOT BE IMPLEMENTED!"));
+	ControlledCharacter->Jump();
 	
-	GEngine->AddOnScreenDebugMessage(1234, 2.0f, FColor::Red, TEXT("JUMP ERROR!"));
 }
 
 void AUnrealTestPlayerController::StopJumping(const FInputActionValue& InputActionValue)
 {
-	UE_LOG(LogTemp, Error, TEXT("STOP JUMPING ERROR! STOP JUMPING SHOULD NOT BE IMPLEMENTED!"));
-	GEngine->AddOnScreenDebugMessage(12345, 2.0f, FColor::Red, TEXT("JUMP ERROR!"));
+	ControlledCharacter->StopJumping();
 }
 
 void AUnrealTestPlayerController::Interact()

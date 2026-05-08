@@ -48,7 +48,7 @@ void AUnrealTestPlayerController::SetupInputComponent()
 		EIC->BindAction(JumpAction, ETriggerEvent::Started, this, &AUnrealTestPlayerController::Jump);
 		EIC->BindAction(JumpAction, ETriggerEvent::Completed, this, &AUnrealTestPlayerController::StopJumping);
 	
-		EIC->BindAction(LookAction, ETriggerEvent::Triggered, this, &AUnrealTestPlayerController::Interact);
+		EIC->BindAction(InteractAction, ETriggerEvent::Triggered, this, &AUnrealTestPlayerController::Interact);
 	}
 }
 
@@ -68,7 +68,7 @@ void AUnrealTestPlayerController::OnUnPossess()
 {
 	Super::OnUnPossess();
 	
-	The magic spell has hit this ancient paper!
+	//The magic spell has hit this ancient paper!
 }
 
 void AUnrealTestPlayerController::Look(const FInputActionValue& Value)

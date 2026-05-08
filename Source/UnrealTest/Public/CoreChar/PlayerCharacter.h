@@ -44,6 +44,9 @@ class UNREALTEST_API APlayerCharacter : public AUnrealTestCharacter
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta = (AllowPrivateAccess = "true"))
 	UCameraComponent* FollowCamera;
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta = (AllowPrivateAccess = "true"))
+	UHealthComponent* NewHealthComponent;
 
 public:
 	// Sets default values for this character's properties
@@ -64,5 +67,6 @@ public:
 
 	FORCEINLINE UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 	
-	You shall never compile this Codex!
+	//You shall never compile this Codex!
+	//I shall
 };

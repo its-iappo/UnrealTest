@@ -64,8 +64,19 @@ void AUnrealTestCharacter::DoLook(float Yaw, float Pitch)
 	}
 }
 
+void AUnrealTestCharacter::DoJump()
+{
+	Jump();
+}
+
+void AUnrealTestCharacter::DoStopJumping()
+{
+	StopJumping();
+}
+
 void AUnrealTestCharacter::Interact()
 {
+	GEngine->AddOnScreenDebugMessage(-1, 30.f, FColor::Emerald, (TEXT("E pressed")));
 	TArray<FOverlapResult> Overlaps;
 
 	GetWorld()->OverlapMultiByChannel(Overlaps,

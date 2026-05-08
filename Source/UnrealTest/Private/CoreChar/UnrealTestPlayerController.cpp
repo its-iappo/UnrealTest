@@ -48,7 +48,7 @@ void AUnrealTestPlayerController::SetupInputComponent()
 		EIC->BindAction(JumpAction, ETriggerEvent::Started, this, &AUnrealTestPlayerController::Jump);
 		EIC->BindAction(JumpAction, ETriggerEvent::Completed, this, &AUnrealTestPlayerController::StopJumping);
 	
-		EIC->BindAction(LookAction, ETriggerEvent::Triggered, this, &AUnrealTestPlayerController::Interact);
+		EIC->BindAction(InteractAction, ETriggerEvent::Triggered, this, &AUnrealTestPlayerController::Interact);
 	}
 }
 
@@ -68,7 +68,7 @@ void AUnrealTestPlayerController::OnUnPossess()
 {
 	Super::OnUnPossess();
 	
-	The magic spell has hit this ancient paper!
+//	The magic spell has hit this ancient paper!
 }
 
 void AUnrealTestPlayerController::Look(const FInputActionValue& Value)
@@ -89,15 +89,16 @@ void AUnrealTestPlayerController::Move(const FInputActionValue& Value)
 
 void AUnrealTestPlayerController::Jump(const FInputActionValue& InputActionValue)
 {
-	UE_LOG(LogTemp, Error, TEXT("JUMP ERROR! JUMP SHOULD NOT BE IMPLEMENTED!"));
-	
-	GEngine->AddOnScreenDebugMessage(1234, 2.0f, FColor::Red, TEXT("JUMP ERROR!"));
+	ControlledCharacter->Jump();
+/*	UE_LOG(LogTemp, Error, TEXT("JUMP ERROR! JUMP SHOULD NOT BE IMPLEMENTED!"));
+	GEngine->AddOnScreenDebugMessage(1234, 2.0f, FColor::Red, TEXT("JUMP ERROR!")); */
 }
 
 void AUnrealTestPlayerController::StopJumping(const FInputActionValue& InputActionValue)
 {
-	UE_LOG(LogTemp, Error, TEXT("STOP JUMPING ERROR! STOP JUMPING SHOULD NOT BE IMPLEMENTED!"));
-	GEngine->AddOnScreenDebugMessage(12345, 2.0f, FColor::Red, TEXT("JUMP ERROR!"));
+	ControlledCharacter->StopJumping();
+/*	UE_LOG(LogTemp, Error, TEXT("STOP JUMPING ERROR! STOP JUMPING SHOULD NOT BE IMPLEMENTED!"));
+	GEngine->AddOnScreenDebugMessage(12345, 2.0f, FColor::Red, TEXT("JUMP ERROR!")); */
 }
 
 void AUnrealTestPlayerController::Interact()

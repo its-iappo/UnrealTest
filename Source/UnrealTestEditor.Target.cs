@@ -1,11 +1,10 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 using UnrealBuildTool;
-using System.Collections.Generic;
 
 public class UnrealTestEditorTarget : TargetRules
 {
-	public UnrealTestEditorTarget(TargetInfo Target) : base(Target)
+	public UnrealTestEditorTarget(TargetInfo target) : base(target)
 	{
 		Type = TargetType.Editor;
 		DefaultBuildSettings = BuildSettingsVersion.V6;

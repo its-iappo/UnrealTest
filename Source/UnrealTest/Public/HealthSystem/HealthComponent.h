@@ -29,10 +29,10 @@ protected:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	bool bStartWithMaxHealth = true;
-	
+public:
 	virtual void BeginPlay() override;
 	
-public:
+
 	
 	UFUNCTION(BlueprintCallable)
 	void ApplyDamage(const float DamageAmount);	

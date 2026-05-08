@@ -54,7 +54,7 @@ void AUnrealTestCharacter::DoMove(float Right, float Forward)
 	}
 }
 
-void AUnrealTestCharacter::DoLook(float Yaw, float Pitch)
+void AUnrealTestCharacter::DoLook(float Yaw, const float Pitch)
 {
 	if (GetController() != nullptr)
 	{

@@ -43,12 +43,13 @@ public:
 	
 	UPROPERTY(EditAnywhere, Category="Input")
 	TObjectPtr<UInputAction> InteractAction;
-	
+protected:
 	virtual void OnPossess(APawn* InPawn) override;
 	virtual void OnUnPossess() override;
-	
-	UFUNCTION()
 	void Look(const FInputActionValue& Value);
+
+	UFUNCTION()
+	void Look(FInputActionValue& Value) const;
 	
 	UFUNCTION()
 	void Move(const FInputActionValue& Value);
@@ -57,7 +58,7 @@ public:
 	void Jump(const FInputActionValue& InputActionValue);
 	
 	UFUNCTION()
-	void StopJumping(const FInputActionValue& InputActionValue);
+	static void StopJumping(const FInputActionValue& InputActionValue);
 
 	UFUNCTION()
 	void Interact();

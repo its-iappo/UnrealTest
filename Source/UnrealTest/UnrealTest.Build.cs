@@ -4,11 +4,11 @@ using UnrealBuildTool;
 
 public class UnrealTest : ModuleRules
 {
-	public UnrealTest(ReadOnlyTargetRules Target) : base(Target)
+	public UnrealTest(ReadOnlyTargetRules target) : base(target)
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
-		PublicDependencyModuleNames.AddRange(new string[] {
+		PublicDependencyModuleNames.AddRange([
 			"Core",
 			"CoreUObject",
 			"Engine",
@@ -19,11 +19,11 @@ public class UnrealTest : ModuleRules
 			"GameplayStateTreeModule",
 			"UMG",
 			"Slate"
-		});
+		]);
 
-		PrivateDependencyModuleNames.AddRange(new string[] { });
+		PrivateDependencyModuleNames.AddRange([]);
 
-		PublicIncludePaths.AddRange(new string[] {
+		PublicIncludePaths.AddRange([
 			"UnrealTest",
 			"UnrealTest/Variant_Platforming",
 			"UnrealTest/Variant_Platforming/Animation",
@@ -38,7 +38,7 @@ public class UnrealTest : ModuleRules
 			"UnrealTest/Variant_SideScrolling/Gameplay",
 			"UnrealTest/Variant_SideScrolling/Interfaces",
 			"UnrealTest/Variant_SideScrolling/UI"
-		});
+		]);
 
 		// Uncomment if you are using Slate UI
 		// PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });

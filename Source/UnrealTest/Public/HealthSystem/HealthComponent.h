@@ -13,7 +13,7 @@ class UNREALTEST_API UHealthComponent : public UActorComponent
 {
 	GENERATED_BODY()
 
-	float CurrentHealth = 0.0f;
+	float CurrentHealth = 100.0f;
 	
 	bool bCanBeDamaged = true;
 
@@ -34,9 +34,9 @@ protected:
 	
 public:
 	
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintCallable,meta = (AllowPrivateAccess = "true"))
 	void ApplyDamage(const float DamageAmount);	
 	
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintCallable,meta = (AllowPrivateAccess = "true"))
 	void Heal(const float HealAmount);
 };

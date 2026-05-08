@@ -34,7 +34,7 @@ void AInteractableActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	
-	Execute_Interact(this)
+	Execute_Interact(this);
 }
 
 void AInteractableActor::Interact_Implementation()

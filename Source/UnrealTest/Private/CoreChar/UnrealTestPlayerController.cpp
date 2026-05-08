@@ -45,10 +45,10 @@ void AUnrealTestPlayerController::SetupInputComponent()
 		EIC->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AUnrealTestPlayerController::Move);
 		EIC->BindAction(LookAction, ETriggerEvent::Triggered, this, &AUnrealTestPlayerController::Look);
 		
-		EIC->BindAction(JumpAction, ETriggerEvent::Started, this, &AUnrealTestPlayerController::Jump);
-		EIC->BindAction(JumpAction, ETriggerEvent::Completed, this, &AUnrealTestPlayerController::StopJumping);
+		// EIC->BindAction(JumpAction, ETriggerEvent::Started, this, &AUnrealTestPlayerController::Jump);
+		// EIC->BindAction(JumpAction, ETriggerEvent::Completed, this, &AUnrealTestPlayerController::StopJumping);
 	
-		EIC->BindAction(LookAction, ETriggerEvent::Triggered, this, &AUnrealTestPlayerController::Interact);
+		EIC->BindAction(InteractAction, ETriggerEvent::Triggered, this, &AUnrealTestPlayerController::Interact);
 	}
 }
 

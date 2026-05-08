@@ -16,6 +16,7 @@ void UHealthComponent::BeginPlay()
 	{
 		CurrentHealth = MaxHealth;
 	}
+	
 }
 
 void UHealthComponent::ApplyDamage(const float DamageAmount)
@@ -29,6 +30,7 @@ void UHealthComponent::ApplyDamage(const float DamageAmount)
 	bCanBeDamaged = CurrentHealth != 0.0f;
 	
 	OnHealthValueChangedDelegate.Broadcast(OldValue, CurrentHealth);
+	UE_LOG(LogTemp, Warning, TEXT("Current Health: %f"), CurrentHealth);
 }
 
 void UHealthComponent::Heal(const float HealAmount)

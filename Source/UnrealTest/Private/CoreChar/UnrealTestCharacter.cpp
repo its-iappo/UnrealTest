@@ -85,10 +85,10 @@ void AUnrealTestCharacter::Interact()
 
 void AUnrealTestCharacter::ApplyDamage_Implementation(const float DamageAmount)
 {
-	HealthComponent->Heal(DamageAmount);
+	HealthComponent->ApplyDamage(DamageAmount);
 }
 
 void AUnrealTestCharacter::Heal_Implementation(const float HealAmount)
 {
-	HealthComponent->ApplyDamage(HealAmount);
+	HealthComponent->Heal(HealAmount);
 }

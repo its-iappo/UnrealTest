@@ -21,9 +21,9 @@ public:
 	UFUNCTION(BlueprintNativeEvent, Category = Damageable)
 	class UHealthComponent* GetHealthComponent() const;
 	
-	UFUNCTION(BlueprintNativeEvent, Category = Damageable)
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = Damageable)
 	void ApplyDamage(const float DamageAmount);
 	
-	UFUNCTION(BlueprintNativeEvent, Category = Damageable)
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = Damageable)
 	void Heal(const float HealAmount);
 };

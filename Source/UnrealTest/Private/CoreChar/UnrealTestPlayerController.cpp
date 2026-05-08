@@ -82,7 +82,7 @@ void AUnrealTestPlayerController::Move(const FInputActionValue& Value)
 	const FVector2D MovementVector = Value.Get<FVector2D>();
 
 	// route the input
-	ControlledCharacter->DoMove(MovementVector.X, MovementVector.Y);
+	ControlledCharacter->DoMove(MovementVector.X, MovementVector.X, MovementVector.Y, MovementVector.Y);
 }
 
 void AUnrealTestPlayerController::Jump(const FInputActionValue& InputActionValue)

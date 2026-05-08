@@ -34,7 +34,7 @@ AUnrealTestCharacter::AUnrealTestCharacter()
 	GetCharacterMovement()->BrakingDecelerationFalling = 1500.0f;
 }
 
-void AUnrealTestCharacter::DoMove(float Right, float Forward)
+void AUnrealTestCharacter::DoMove(float Right, float Left, float Forward, float Behind)
 {
 	if (GetController() != nullptr)
 	{
@@ -43,10 +43,17 @@ void AUnrealTestCharacter::DoMove(float Right, float Forward)
 		const FRotator YawRotation(0, Rotation.Yaw, 0);
 
 		// get forward vector
-		const FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
+		const FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
+		
+		//get behind vector
+		const FVector BehindDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
 
 		// get right vector 
-		const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
+		const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
+		
+		// get left vector
+		const FVector LeftDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
+		
 
 		// add movement 
 		AddMovementInput(ForwardDirection, Forward);

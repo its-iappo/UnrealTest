@@ -62,7 +62,7 @@ protected:
 public:
 	AUnrealTestCharacter();
 	UFUNCTION(BlueprintCallable, Category="Input")
-	virtual void DoMove(float Right, float Left, float Forward, float Behind);
+	virtual void DoMove(float Right, float Forward);
 
 	UFUNCTION(BlueprintCallable, Category="Input")
 	virtual void DoLook(float Yaw, float Pitch);

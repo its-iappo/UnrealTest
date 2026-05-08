@@ -22,7 +22,7 @@ AUnrealTestCharacter::AUnrealTestCharacter()
 
 	// Configure character movement
 	GetCharacterMovement()->bOrientRotationToMovement = true;
-	GetCharacterMovement()->RotationRate = FRotator(0.0f, 500.0f, 0.0f);
+	GetCharacterMovement()->RotationRate = FRotator(0.0f, 0.0f, 0.0f);
 
 	// Note: For faster iteration times these variables, and many more, can be tweaked in the Character Blueprint
 	// instead of recompiling to adjust them
@@ -34,32 +34,21 @@ AUnrealTestCharacter::AUnrealTestCharacter()
 	GetCharacterMovement()->BrakingDecelerationFalling = 1500.0f;
 }
 
-void AUnrealTestCharacter::DoMove(float Right, float Left, float Forward, float Behind)
-{
-	if (GetController() != nullptr)
+	void AUnrealTestCharacter::DoMove(float Right, float Forward)
 	{
-		// find out which way is forward
-		const FRotator Rotation = GetController()->GetControlRotation();
-		const FRotator YawRotation(0, Rotation.Yaw, 0);
+		if (GetController() != nullptr)
+		{
+			const FRotator Rotation = GetController()->GetControlRotation();
+			const FRotator YawRotation(0.f, Rotation.Yaw, 0.f);
 
-		// get forward vector
-		const FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
-		
-		//get behind vector
-		const FVector BehindDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
+			const FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
+			const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
 
-		// get right vector 
-		const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
-		
-		// get left vector
-		const FVector LeftDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
-		
-
-		// add movement 
-		AddMovementInput(ForwardDirection, Forward);
-		AddMovementInput(RightDirection, Right);
+			AddMovementInput(ForwardDirection, Forward);
+			AddMovementInput(RightDirection, Right);
+		}
 	}
-}
+
 
 void AUnrealTestCharacter::DoLook(float Yaw, float Pitch)
 {

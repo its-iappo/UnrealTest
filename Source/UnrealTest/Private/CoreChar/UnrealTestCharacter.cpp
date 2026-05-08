@@ -64,6 +64,16 @@ void AUnrealTestCharacter::DoLook(float Yaw, float Pitch)
 	}
 }
 
+void AUnrealTestCharacter::DoJumpStart()
+{
+	Jump();
+}
+
+void AUnrealTestCharacter::DoJumpEnd()
+{
+	StopJumping();
+}
+
 void AUnrealTestCharacter::Interact()
 {
 	TArray<FOverlapResult> Overlaps;

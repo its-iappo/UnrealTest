@@ -64,5 +64,5 @@ public:
 
 	FORCEINLINE UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 	
-	You shall never compile this Codex!
+ //You shall never compile this Codex!
 };

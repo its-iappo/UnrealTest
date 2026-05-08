@@ -48,7 +48,7 @@ void AUnrealTestPlayerController::SetupInputComponent()
 		// EIC->BindAction(JumpAction, ETriggerEvent::Started, this, &AUnrealTestPlayerController::Jump);
 		// EIC->BindAction(JumpAction, ETriggerEvent::Completed, this, &AUnrealTestPlayerController::StopJumping);
 	
-		EIC->BindAction(InteractAction, ETriggerEvent::Triggered, this, &AUnrealTestPlayerController::Interact);
+		EIC->BindAction(InteractAction, ETriggerEvent::Started, this, &AUnrealTestPlayerController::Interact);
 	}
 }
 

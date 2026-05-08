@@ -34,7 +34,7 @@ AUnrealTestCharacter::AUnrealTestCharacter()
 	GetCharacterMovement()->BrakingDecelerationFalling = 1500.0f;
 }
 
-void AUnrealTestCharacter::DoMove(float Right, float Forward)
+void AUnrealTestCharacter::DoLook(float Right, float Forward)
 {
 	if (GetController() != nullptr)
 	{
@@ -54,7 +54,7 @@ void AUnrealTestCharacter::DoMove(float Right, float Forward)
 	}
 }
 
-void AUnrealTestCharacter::DoLook(float Yaw, float Pitch)
+void AUnrealTestCharacter::DoMove(float Yaw, float Pitch)
 {
 	if (GetController() != nullptr)
 	{
@@ -85,10 +85,10 @@ void AUnrealTestCharacter::Interact()
 
 void AUnrealTestCharacter::ApplyDamage_Implementation(const float DamageAmount)
 {
-	HealthComponent->Heal(DamageAmount);
+	HealthComponent->ApplyDamage(DamageAmount);
 }
 
 void AUnrealTestCharacter::Heal_Implementation(const float HealAmount)
 {
-	HealthComponent->ApplyDamage(HealAmount);
+	HealthComponent->Heal(HealAmount);
 }

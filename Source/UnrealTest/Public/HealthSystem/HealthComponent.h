@@ -12,9 +12,10 @@ UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class UNREALTEST_API UHealthComponent : public UActorComponent
 {
 	GENERATED_BODY()
-
+	UPROPERTY(EditAnywhere)
 	float CurrentHealth = 0.0f;
 	
+	UPROPERTY(EditAnywhere)
 	bool bCanBeDamaged = true;
 
 public:

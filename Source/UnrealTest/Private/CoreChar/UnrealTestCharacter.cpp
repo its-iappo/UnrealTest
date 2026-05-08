@@ -34,6 +34,16 @@ AUnrealTestCharacter::AUnrealTestCharacter()
 	GetCharacterMovement()->BrakingDecelerationFalling = 1500.0f;
 }
 
+
+void AUnrealTestCharacter::BeginPlay()
+{
+	if (HealthComponent)
+	{
+	//	HealthComponent->OnHealthValueChangedDelegate.AddDynamic(this, &AUnrealTestCharacter::HandleOnHealthValueChanged);
+	}
+}
+
+
 void AUnrealTestCharacter::DoMove(float Right, float Forward)
 {
 	if (GetController() != nullptr)
@@ -64,15 +74,11 @@ void AUnrealTestCharacter::DoLook(float Yaw, float Pitch)
 	}
 }
 
-void AUnrealTestCharacter::Interact()
+void AUnrealTestCharacter::DoInteract()
 {
 	TArray<FOverlapResult> Overlaps;
 
-	GetWorld()->OverlapMultiByChannel(Overlaps,
-	                                  GetActorLocation(), FQuat::Identity,
-	                                  ECollisionChannel::ECC_Visibility,
-	                                  FCollisionShape::MakeSphere(InteractionRadius)
-	);
+	GetWorld()->OverlapMultiByChannel(Overlaps,GetActorLocation(), FQuat::Identity, ECollisionChannel::ECC_Visibility, FCollisionShape::MakeSphere(InteractionRadius));
 	
 	for (const auto& Overlap : Overlaps)
 	{
@@ -85,10 +91,19 @@ void AUnrealTestCharacter::Interact()
 
 void AUnrealTestCharacter::ApplyDamage_Implementation(const float DamageAmount)
 {
-	HealthComponent->Heal(DamageAmount);
+	HealthComponent->ApplyDamage(DamageAmount);
 }
 
 void AUnrealTestCharacter::Heal_Implementation(const float HealAmount)
 {
-	HealthComponent->ApplyDamage(HealAmount);
+	HealthComponent->Heal(HealAmount);
+}
+
+
+void AUnrealTestCharacter::EndPlay()
+{
+	if (HealthComponent)
+	{
+		//HealthComponent->OnHealthValueChangedDelegate.RemoveDynamic(this, &AUnrealTestCharacter::HandleOnHealthValueChanged);
+	}
 }

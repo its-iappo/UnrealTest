@@ -16,4 +16,8 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	virtual void Interact_Implementation() override;
+	
+	void Execute_Interact(AInteractableActor* InteractableActor);
+
 };
+

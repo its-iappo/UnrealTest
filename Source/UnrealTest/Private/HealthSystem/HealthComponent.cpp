@@ -16,15 +16,16 @@ void UHealthComponent::BeginPlay()
 	{
 		CurrentHealth = MaxHealth;
 	}
+	
 }
 
 void UHealthComponent::ApplyDamage(const float DamageAmount)
 {
-	if (!bCanBeDamaged) return;
+	if (!bCanBeDamaged){ return;}
 	
 	const float OldValue = CurrentHealth;
 	
-	CurrentHealth = FMath::Clamp(CurrentHealth + DamageAmount, 0.f, MaxHealth);
+	CurrentHealth = FMath::Clamp(CurrentHealth - DamageAmount, 0.f, MaxHealth);
 	
 	bCanBeDamaged = CurrentHealth != 0.0f;
 	
@@ -35,7 +36,7 @@ void UHealthComponent::Heal(const float HealAmount)
 {
 	const float OldValue = CurrentHealth;
 	
-	CurrentHealth = FMath::Clamp(CurrentHealth - HealAmount, 0.f, MaxHealth);
+	CurrentHealth = FMath::Clamp(CurrentHealth + HealAmount, 0.f, MaxHealth);
 	
 	bCanBeDamaged = CurrentHealth != 0.0f;
 	
